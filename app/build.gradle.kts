@@ -66,6 +66,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+//    Navigation
     implementation(libs.androidx.navigation.compose)
+    
+//    serialization
+    implementation(libs.kotlinx.serialization.json)
+//    Ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio) // CIO engine
+    implementation(libs.ktor.client.serialization) // JSON serialization
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.retrofit)
 
 }

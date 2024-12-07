@@ -67,9 +67,10 @@ fun  loginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value = userName,
             onValueChange = {userName = it},
-            label = { Text("Enter your Username") },
-            placeholder = { Text("Enter your username") },
+            label = { Text("Enter your Username / email") },
+            placeholder = { Text("Enter your username or email") },
             maxLines = 1,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             trailingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = null) }
 
             )
