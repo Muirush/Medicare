@@ -27,7 +27,7 @@ import java.time.LocalTime
 
 //fun homeScreen(userName:String,viewModel: modicinesViewModel){
 
-fun homeScreen(viewModel: modicinesViewModel){
+fun homeScreen(userName:String){
     Column (modifier = Modifier.fillMaxSize() .padding(0.dp,40.dp,0.dp, 0.dp),
 //        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -39,30 +39,15 @@ fun homeScreen(viewModel: modicinesViewModel){
             in 17..21 ->"Good Evening"
             else -> "Good Night"
         }
-//        Text(text = "$greetings  $userName" )
+        Text(text = "$greetings  $userName" )
 
-        val problemsState = viewModel.problemsState.collectAsState()
 
-        when (val state = problemsState.value) {
-            is Result.Loading -> CircularProgressIndicator()
-            is Result.Success -> LazyColumn {
-                state.data.problems.forEach { problem ->
-                    problem.Diabetes.forEach { condition ->
-                        condition.medications.forEach { medication ->
-                            medication.medicationsClasses.forEach { medicationClass ->
-                                medicationClass.className.forEach { drugClass ->
-                                    items(drugClass.associatedDrug) { drug ->
-                                        DrugItem(drug)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            is Result.Error -> Text("Error: ${state.message}")
-        }
-
+    }
+    Column (modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+        medicationListScreen()
     }
 }
 //@Composable

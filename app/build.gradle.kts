@@ -77,5 +77,7 @@ dependencies {
     implementation(libs.ktor.client.serialization) // JSON serialization
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.retrofit)
+    implementation(libs.converter.gson.v2100)
+
 
 }

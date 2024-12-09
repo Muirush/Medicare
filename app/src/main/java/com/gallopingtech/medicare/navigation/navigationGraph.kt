@@ -21,8 +21,7 @@ fun navigationGraph() {
         composable(Routes.homeScreen +"/{userName}"){
             var userName = it.arguments?.getString("userName")
             if (userName != null) {
-//                homeScreen(userName, viewModel = viewModel())
-                homeScreen( viewModel = viewModel())
+                homeScreen(userName)
             }
         }
         composable(Routes.medViewScreen){

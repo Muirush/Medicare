@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gallopingtech.medicare.navigation.navigationGraph
 import com.gallopingtech.medicare.screens.loginScreen
+import com.gallopingtech.medicare.screens.medicationListScreen
 import com.gallopingtech.medicare.ui.theme.MediCareTheme
 import com.gallopingtech.medicare.viewmodel.modicinesViewModel
 
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
            navigationGraph()
-//            ProblemsScreen(viewModel = viewModel())
+//            medicationListScreen()
         }
     }
 }
