@@ -16,7 +16,6 @@ import com.gallopingtech.medicare.navigation.navigationGraph
 import com.gallopingtech.medicare.screens.loginScreen
 import com.gallopingtech.medicare.screens.medicationListScreen
 import com.gallopingtech.medicare.ui.theme.MediCareTheme
-import com.gallopingtech.medicare.viewmodel.modicinesViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +23,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
            navigationGraph()
-//            medicationListScreen()
         }
     }
 }

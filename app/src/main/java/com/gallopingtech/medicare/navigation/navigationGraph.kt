@@ -1,7 +1,6 @@
 package com.gallopingtech.medicare.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -24,8 +23,17 @@ fun navigationGraph() {
                 homeScreen(userName)
             }
         }
-        composable(Routes.medViewScreen){
-            medViewScreen(navController)
+        composable(Routes.medViewScreen +"/{drugName}" +"/{drugDose}" +"/{drugStrength}"){
+            var drugName = it.arguments?.getString("drugName")
+            var drugDose = it.arguments?.getString("drugDose")
+            var drugStrength = it.arguments?.getString("drugStrength")
+            if (drugName != null) {
+                if (drugDose != null) {
+                    if (drugStrength != null) {
+                        medViewScreen(navController, drugName, drugDose , drugStrength)
+                    }
+                }
+            }
         }
     }
 }

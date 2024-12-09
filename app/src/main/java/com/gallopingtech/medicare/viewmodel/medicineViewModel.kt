@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gallopingtech.medicare.data.retrofit.apiService
+import kotlin.Result
 
 class medicineViewModel : ViewModel(){
-    private val _medicationData = MutableStateFlow<ProblemsResponse?>(null)
-    val ProblemsResponse: StateFlow<ProblemsResponse?> = _medicationData
+    private val _medicationData = MutableStateFlow<com.gallopingtech.medicare.viewmodel.Result<ProblemsResponse?>>(com.gallopingtech.medicare.viewmodel.Result.Loading)
+    val ProblemsResponse: StateFlow<com.gallopingtech.medicare.viewmodel.Result<ProblemsResponse?>> = _medicationData
 
     init {
         fetchMedications()
@@ -20,8 +21,18 @@ class medicineViewModel : ViewModel(){
 
     private fun fetchMedications() {
         viewModelScope.launch {
-            val result = apiService.getProblems()  // Assuming Retrofit call here
-            _medicationData.value = result
+            try {
+                val result = apiService.getProblems()
+                _medicationData.value = com.gallopingtech.medicare.viewmodel.Result.Success(result)
+
+            }catch (e:Exception){
+                val result = apiService.getProblems()
+                _medicationData.value = com.gallopingtech.medicare.viewmodel.Result.Error(result.toString())
+
+            }
+
         }
+
+
     }
 }
